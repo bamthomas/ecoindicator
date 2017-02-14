@@ -1,0 +1,13 @@
+{
+  "name": "ecoindicator",
+  "version": "0.1.0",
+  "description": "Eco indicator for a website based on ecoindex.fr : give dom elements/nb HTTP requests/downloaded size",
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bamthomas/ecoindicator.git"
+  }
+}
