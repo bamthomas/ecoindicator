@@ -17,15 +17,16 @@ export class PageIndicator {
         let doc = this.dom_parser.parseFromString(body);
         this.nb_dom_elements = doc.getElementsByTagName('*').length;
 
-        let scripts = _.map(doc.getElementsByTagName('script'), function (item) {
+        let scripts = _.chain(doc.getElementsByTagName('script')).map(function (item) {
           return item.getAttribute('src')
-        });
-        let links = _.map(doc.getElementsByTagName('link'), function (item) {
+        }).compact().value();
+        let links = _.chain(doc.getElementsByTagName('link')).map(function (item) {
           return item.getAttribute('href')
-        });
-        let images = _.map(doc.getElementsByTagName('img'), function (item) {
+        }).compact().value();
+        let images = _.chain(doc.getElementsByTagName('img')).map(function (item) {
           return item.getAttribute('src')
-        });
+        }).compact().value();
+
         result = result.concat(scripts).concat(links).concat(images);
       }
       if (response.headers['content-type'].startsWith('text/css')) {

@@ -35,6 +35,14 @@ describe('indicator', () => {
     expect(result).to.have.all.members(['myscript1', 'myscript2']);
   });
 
+  it('should not return inline JS scripts', () => {
+    let page_indicator = new ind.PageIndicator(new DOMParser());
+
+    var result = page_indicator.push(null, create_response(),'<html><script></script></html>');
+
+    expect(result).to.have.all.members([]);
+  });
+
   it('should return links', () => {
     let page_indicator = new ind.PageIndicator(new DOMParser());
 
@@ -49,6 +57,14 @@ describe('indicator', () => {
     expect(result).to.have.all.members(['myimage', 'mycss']);
   });
 
+  it('should not return empty href link', () => {
+    let page_indicator = new ind.PageIndicator(new DOMParser());
+
+    var result = page_indicator.push(null, create_response(),'<html><header><link /></header></html>');
+
+    expect(result).to.have.all.members([]);
+  });
+
   it('should return images', () => {
     let page_indicator = new ind.PageIndicator(new DOMParser());
 
@@ -60,6 +76,14 @@ describe('indicator', () => {
       '</html>');
 
     expect(result).to.have.all.members(['myimage']);
+  });
+
+  it('should not return empty src images', () => {
+    let page_indicator = new ind.PageIndicator(new DOMParser());
+
+    var result = page_indicator.push(null, create_response(),'<html><img/></html>');
+
+    expect(result).to.have.all.members([]);
   });
 
   it('should return url starting with http/https from CSS', function () {
