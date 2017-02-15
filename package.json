@@ -4,9 +4,7 @@
   "description": "Eco indicator for a website based on ecoindex.fr : give dom elements/nb HTTP requests/downloaded size",
   "scripts": {
     "test": "cross-env BABEL_ENV=test mocha --compilers js:babel-register",
-    "build": "webpack -p webpack.config.js",
-    "lint": "eslint --ext .js src test/specs",
-    "lint:fix": "eslint --ext .js --fix src test/specs"
+    "build": "webpack -p webpack.config.js"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -40,9 +38,15 @@
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "webpack": "^2.2.1",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-shell-plugin": "^0.5.0",
+    "xmldom": "^0.1.27"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
+    "request": "^2.79.0",
+    "tls": "^0.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bamthomas/ecoindicator.git"
